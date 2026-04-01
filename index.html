@@ -4,22 +4,120 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Robot Learning Deadlines</title>
+    <meta
+      name="description"
+      content="A clean calendar and reference board for robotics and robot learning conference deadlines."
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <main class="container">
-      <header>
-        <h1>Robot Learning Deadlines</h1>
-        <p>Static website + JSON data source. Clean, lightweight, and easy to host.</p>
-        <p id="updated" class="meta">Loading latest deadline snapshot...</p>
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Conference Calendar</p>
+          <h1>Robot Learning Deadlines</h1>
+          <p class="lede">
+            A simple calendar for tracking conference and workshop deadlines, with official-source
+            links and extension notes when they exist.
+          </p>
+        </div>
+
+        <div class="hero-meta">
+          <p id="updated" class="meta">Loading latest deadline snapshot...</p>
+          <div class="stats" aria-label="Deadline summary">
+            <article class="stat">
+              <span class="stat-label">Upcoming</span>
+              <strong id="stat-upcoming">0</strong>
+            </article>
+            <article class="stat">
+              <span class="stat-label">This Month</span>
+              <strong id="stat-urgent">0</strong>
+            </article>
+            <article class="stat">
+              <span class="stat-label">Extensions</span>
+              <strong id="stat-extensions">0</strong>
+            </article>
+            <article class="stat">
+              <span class="stat-label">Conflicts</span>
+              <strong id="stat-conflicts">0</strong>
+            </article>
+          </div>
+        </div>
       </header>
 
       <section class="toolbar">
-        <input id="search" type="search" placeholder="Filter conferences (e.g., ICRA, CoRL)" />
+        <label class="search-wrap" for="search">
+          <span class="search-label">Search</span>
+          <input id="search" type="search" placeholder="Filter conferences, deadline types, notes..." />
+        </label>
+        <div class="legend" aria-label="Deadline legend">
+          <span class="legend-pill legend-urgent">Approaching this month</span>
+          <span class="legend-pill legend-extension">Extension recorded</span>
+          <span class="legend-pill legend-conflict">Conflicting sources</span>
+        </div>
       </section>
 
-      <section id="grid" class="grid"></section>
+      <section class="filter-bar" aria-label="View filters">
+        <button class="filter-chip is-active" data-filter="all" type="button">All</button>
+        <button class="filter-chip" data-filter="urgent" type="button">Due This Month</button>
+        <button class="filter-chip" data-filter="changed" type="button">Extensions</button>
+        <button class="filter-chip" data-filter="conflicts" type="button">Conflicts</button>
+        <button class="filter-chip" data-filter="workshops" type="button">Workshops</button>
+      </section>
+
+      <section id="change-banner" class="change-banner" aria-live="polite"></section>
+
+      <section class="panel timeline-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Timeline</p>
+            <h2>Next Up</h2>
+          </div>
+          <p class="section-note">A compact view of the nearest deadlines.</p>
+        </div>
+        <div id="timeline" class="timeline" aria-live="polite"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Calendar</p>
+            <h2>Upcoming Dates</h2>
+          </div>
+          <p class="section-note">Grouped by month for quick scanning.</p>
+        </div>
+        <div id="calendar" class="calendar" aria-live="polite"></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Reference</p>
+            <h2>All Entries</h2>
+          </div>
+          <p class="section-note">Includes unavailable items so missing dates are obvious.</p>
+        </div>
+        <section id="grid" class="grid" aria-live="polite"></section>
+      </section>
+
+      <details class="panel archive-panel">
+        <summary class="archive-summary">
+          <span>
+            <span class="section-kicker">Archive</span>
+            <strong>Past Deadlines</strong>
+          </span>
+          <span id="past-count" class="archive-count">0 items</span>
+        </summary>
+        <section id="past-grid" class="grid past-grid" aria-live="polite"></section>
+      </details>
     </main>
+
+    <dialog id="item-modal" class="item-modal">
+      <form method="dialog" class="item-modal-shell">
+        <button class="modal-close" type="submit" aria-label="Close details">Close</button>
+      </form>
+      <div id="item-modal-content" class="item-modal-content"></div>
+    </dialog>
 
     <script src="script.js"></script>
   </body>

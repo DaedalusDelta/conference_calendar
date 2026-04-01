@@ -1,41 +1,1028 @@
 {
-  "updated_at": "2026-04-01T03:51:05.651306+00:00",
-  "count": 5,
+  "updated_at": "2026-04-01T05:54:53.144313+00:00",
+  "count": 44,
+  "change_summary": {
+    "new": 33,
+    "updated": 4,
+    "extended": 0,
+    "unchanged": 7
+  },
   "items": [
     {
-      "conference": "IROS",
-      "type": "unavailable",
-      "date": "",
-      "raw": "No explicit deadline strings detected automatically.",
-      "source": "https://www.ieee-iros.org/"
-    },
-    {
-      "conference": "ICRA",
-      "type": "unavailable",
-      "date": "",
-      "raw": "No explicit deadline strings detected automatically.",
-      "source": "https://2026.ieee-icra.org/"
+      "conference": "CoRL",
+      "title": "CoRL",
+      "type": "paper",
+      "date": "2026-05-28",
+      "is_extension": false,
+      "source": "https://2026.corl.org/contributions",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.corl.org/contributions/instruction-for-authors",
+          "kind": "website",
+          "note": "Author instructions repeat that the paper submission deadline is Thursday 5/28 and describe it as EOD/AoE."
+        },
+        {
+          "url": "https://openreview.net/group?id=robot-learning.org/CoRL/2026/Conference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the conference site; accessible page text did not expose dated deadline fields."
+        }
+      ],
+      "raw": "Submission Deadline: May 28, 2026 (AoE).",
+      "notes": "Conference-level submission deadline from the official Contributions page. The author instructions also say the paper submission deadline is Thursday 5/28 EOD; treated as the same AoE date. No official abstract, rebuttal, supplementary, or demo date was visible in accessible text on the official 2026 pages reviewed.",
+      "conflict_note": "",
+      "change_status": "updated",
+      "change_summary": "Source or conflict details changed in the latest refresh.",
+      "previous_date": "2026-05-28"
     },
     {
       "conference": "CoRL",
+      "title": "CoRL Workshops",
       "type": "unavailable",
       "date": "",
-      "raw": "No explicit deadline strings detected automatically.",
-      "source": "https://www.corl.org/"
+      "is_extension": false,
+      "source": "https://2026.corl.org/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.corl.org/_/search?query=CoRL+2026&scope=site&showCloudSearchTab=false",
+          "kind": "website",
+          "note": "Official site search for 2026 indexed Home, Call for Papers, Contributions, Instruction for Authors, and Sponsorship, but no 2026 workshops page."
+        },
+        {
+          "url": "https://openreview.net/group?id=robot-learning.org/CoRL/2026/Conference",
+          "kind": "submission_portal",
+          "note": "Conference submission portal located, but no official 2026 workshop group page was found from the conference site or portal."
+        }
+      ],
+      "raw": "The home page lists 'Workshops: November 9' but no workshops landing page or workshop-specific submission deadline page was found on the official 2026 site.",
+      "notes": "Workshop discovery was performed from the edition site and official site search. As of April 1, 2026, the official 2026 CoRL site shows that workshops exist on November 9, 2026, but does not expose an authoritative workshops index or individual workshop deadline pages, so no workshop-specific deadlines can be supported.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "At the Crossroads of Control: Model-based VS Learning based Control for Humanoids",
+      "type": "workshop",
+      "date": "2025-09-19",
+      "is_extension": true,
+      "source": "https://robots.ihmc.us/humanoids-2025-workshop",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "Contributions should be submitted ... by September 14, 2025 ... September 19, Friday, 2025 (EST): Deadline has been extended.",
+      "notes": "Official workshop page shows an original September 14 deadline replaced by an extended September 19, 2025 deadline. Marked as extension.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "Humanoids",
+      "type": "paper",
+      "date": "2025-05-01",
+      "is_extension": false,
+      "source": "https://robogaku.jp/news/2025/202504211830.html",
+      "source_kind": "miscellaneous",
+      "alternate_sources": [
+        {
+          "url": "https://2025humanoids.org/",
+          "kind": "website",
+          "note": "Official 2025 edition URL returned 403 during retrieval."
+        },
+        {
+          "url": "https://www.wikicfp.com/cfp/servlet/event.showcfp?copyownerid=90704&eventid=185201",
+          "kind": "miscellaneous",
+          "note": "Independent CFP mirror matched May 1, 2025."
+        },
+        {
+          "url": "https://xrobotlab.jp/2025/03/25/robot-cfp2025/",
+          "kind": "miscellaneous",
+          "note": "Listed a later May 15, 2025 paper deadline extension."
+        }
+      ],
+      "raw": "May 1, 2025: Papers Submission Deadline.",
+      "notes": "Official edition site was inaccessible, so the date was taken from a target-year CFP mirror that directly referenced the official site. No authoritative portal page with the conference deadline was found.",
+      "conflict_note": "ROBOGAKU and WikiCFP list May 1, 2025, while another miscellaneous lab page lists a May 15, 2025 extension; without accessible official confirmation of the extension, May 1 was retained.",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "Humanoids",
+      "type": "workshop",
+      "date": "2025-05-31",
+      "is_extension": false,
+      "source": "https://robogaku.jp/news/2025/202504211830.html",
+      "source_kind": "miscellaneous",
+      "alternate_sources": [
+        {
+          "url": "https://2025humanoids.org/",
+          "kind": "website",
+          "note": "Official 2025 edition URL returned 403 during retrieval."
+        }
+      ],
+      "raw": "May 31, 2025: Workshop&Tutorials Proposals Deadline.",
+      "notes": "Conference-level workshop/tutorial proposal deadline from a target-year CFP mirror because the official edition site was inaccessible.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "Humanoids in Action: Real-World Interaction, Expectations, and Challenges",
+      "type": "workshop",
+      "date": "2025-09-20",
+      "is_extension": false,
+      "source": "https://rwhri.github.io/Humanoids2025_workshop/",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "Submission deadline: September 20, 2025. All deadlines are at 23:59 Anywhere on Earth time.",
+      "notes": "Official workshop page lists the submission deadline and explicitly states AOE timing.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "IEEE RAS Humanoids 2025 Workshop DHM",
+      "type": "unavailable",
+      "date": "",
+      "is_extension": false,
+      "source": "https://openreview.net/venue?id=IEEE.org",
+      "source_kind": "submission_portal",
+      "alternate_sources": [],
+      "raw": "The IEEE OpenReview venue index lists 'IEEE RAS Humanoids 2025 Workshop DHM.'",
+      "notes": "Inspected the official IEEE OpenReview venue index as required. The workshop entry was visible, but no accessible workshop page or authoritative deadline text could be retrieved from the indexed sources.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "Sim-to-Real Transfer for Humanoid Robots",
+      "type": "workshop",
+      "date": "2025-08-31",
+      "is_extension": false,
+      "source": "https://d-fence.sytes.net/research/dynaforo.html",
+      "source_kind": "miscellaneous",
+      "alternate_sources": [
+        {
+          "url": "https://sites.google.com/view/sim-to-real-humanoids",
+          "kind": "website",
+          "note": "Official workshop page confirmed the workshop identity and accepted contributions, but the crawl did not expose the submission deadline."
+        },
+        {
+          "url": "https://openreview.net/submissions?venue=IEEE.org%2FRAS%2FHumanoids%2F2025%2FWorkshop%2FWS-Sim2Real",
+          "kind": "submission_portal",
+          "note": "Provided OpenReview submissions URL returned 403 during retrieval."
+        }
+      ],
+      "raw": "Abstract Submission Deadline: August 31 (on OpenReview). Submission Deadline: August 31 2025.",
+      "notes": "Deadline came from an organizer-hosted page for the official workshop because the official workshop site crawl did not show a date. The text ties the submission to OpenReview.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "Humanoids",
+      "title": "Workshop on Embodied Co-Creation: Robotic Tools That Make and Perform Arts",
+      "type": "workshop",
+      "date": "2025-09-15",
+      "is_extension": false,
+      "source": "https://embodied-co-create.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://openreview.net/group?id=IEEE.org%2FRAS%2FHumanoids%2F2025%2FWorkshop%2FE-CoCreate",
+          "kind": "submission_portal",
+          "note": "Official submission link from the workshop page; direct fetch returned cache miss."
+        }
+      ],
+      "raw": "Submission deadline: 15 September 2025, 23:59 AOE.",
+      "notes": "Workshop-specific submission deadline on the official workshop page. Timezone is explicitly Anywhere on Earth.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "Beyond Teleoperation: Learning from Diverse Human and Simulation Data",
+      "type": "workshop",
+      "date": "2026-04-24",
+      "is_extension": false,
+      "source": "https://icra-beyond-teleop.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA workshop index lists this workshop; the index spells it \u201cBeyond Teloperation.\u201d"
+        }
+      ],
+      "raw": "The workshop\u2019s Important Dates table lists \u201cSubmission Deadline April 24th, 2026 11:59pm AOE.\u201d",
+      "notes": "Workshop-specific submission deadline on the official workshop page. Timezone is AOE. The official ICRA workshop index uses a slightly different spelling of the title (\u201cTeloperation\u201d).",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "From Data to Decisions: VLA Pipelines for Real Robots",
+      "type": "workshop",
+      "date": "2026-04-15",
+      "is_extension": false,
+      "source": "https://icra2026vlapipeline.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA 2026 workshop index links to this workshop page."
+        }
+      ],
+      "raw": "The workshop page lists \u201cPaper Submission Deadline\u201d under Important Dates as Apr 15 and says \u201cDeadline: April 15, 2026.\u201d",
+      "notes": "Workshop paper-track deadline from the official workshop site; submissions are via OpenReview according to the same page.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "ICRA",
+      "type": "paper",
+      "date": "2025-09-15",
+      "is_extension": false,
+      "source": "https://2026.ieee-icra.org/contribute/",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "The official contribute page says submissions are due by 15 September 2025 and lists \u201cPaper Submission Deadline: 15 September 2025 (11:59 PST).\u201d",
+      "notes": "Conference-level paper deadline for the ICRA 2026 edition. Timezone is stated as PST on the official site.",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2025-09-15"
+    },
+    {
+      "conference": "ICRA",
+      "title": "ICRA",
+      "type": "workshop",
+      "date": "2025-09-25",
+      "is_extension": false,
+      "source": "https://2026.ieee-icra.org/contribute/call-for-icra-2026-workshops-tutorials-proposals/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/contribute/",
+          "kind": "website",
+          "note": "Overview contribute page matches the September 25, 2025 workshops/tutorials proposal deadline."
+        }
+      ],
+      "raw": "The workshops/tutorials proposal page lists \u201cSubmission deadline: September 25th, 2025.\u201d",
+      "notes": "This is the conference-level deadline for workshop/tutorial proposals, not an individual workshop paper deadline.",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2025-09-25"
+    },
+    {
+      "conference": "ICRA",
+      "title": "ICRA",
+      "type": "registration",
+      "date": "2026-03-31",
+      "is_extension": true,
+      "source": "https://2026.ieee-icra.org/attend/registration-information/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/announcements/author-extended-registration-deadline/",
+          "kind": "website",
+          "note": "Intermediate extension announcement moved the author registration deadline to March 13, 2026."
+        },
+        {
+          "url": "https://2026.ieee-icra.org/contribute/call-for-icra-2026-papers-now-accepting-submissions/",
+          "kind": "website",
+          "note": "Older call-for-papers page still lists March 6, 2026 for author registration."
+        }
+      ],
+      "raw": "The registration page states \u201cAuthor registration deadline: 6 March 2026, finally extended to March 31, 2026.\u201d",
+      "notes": "Marked as an extension because the registration page explicitly says the author deadline was finally extended. The same page ties this deadline to paper retention in the program and proceedings.",
+      "conflict_note": "Official ICRA pages disagree: the older call-for-papers page lists March 6, 2026, a later announcement extends it to March 13, 2026, and the registration page gives the latest official status as finally extended to March 31, 2026. The registration page was used as the highest-priority current official source.",
+      "change_status": "updated",
+      "change_summary": "Source or conflict details changed in the latest refresh.",
+      "previous_date": "2026-03-31"
+    },
+    {
+      "conference": "ICRA",
+      "title": "ICRA Late Breaking Results",
+      "type": "abstract",
+      "date": "2026-04-10",
+      "is_extension": false,
+      "source": "https://2026.ieee-icra.org/contribute/call-for-late-breaking-results/",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "The Late Breaking Results page lists \u201cApril 10, 2026 \u2013 23:59 (PST): Deadline for submission of Late Breaking Results Poster.\u201d",
+      "notes": "Official late-breaking-results submission deadline; the page also says authors must include a 2-page extended abstract with the poster.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "Open Challenges in Robotics for Asset Inspection and Management (OCRAIM)",
+      "type": "workshop",
+      "date": "2026-04-04",
+      "is_extension": false,
+      "source": "https://ariamhub.com/ocraim/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA 2026 workshop index links to this workshop page."
+        }
+      ],
+      "raw": "The workshop page lists \u201cPaper Submission Deadline: 4 April 2026, 11:59PM (AoE).\u201d",
+      "notes": "Workshop-specific paper deadline on the official workshop site. Timezone is AoE. The page says submissions are handled in CMT.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "Perceptual Challenges for Planetary Exploration: Enabling The Next Generation of Space Robotic Missions",
+      "type": "workshop",
+      "date": "2026-04-03",
+      "is_extension": false,
+      "source": "https://icra2026-planetary-robotics.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA 2026 workshop index links to this workshop page; the workshop site uses the shorter title \u201c1st Workshop on Perceptual Challenges for Planetary Exploration.\u201d"
+        }
+      ],
+      "raw": "The workshop page\u2019s Important dates section lists \u201cPaper submission deadline: April 3rd 2026.\u201d",
+      "notes": "Workshop-specific extended-abstract deadline on the official workshop site. The same page says submissions are handled with OpenReview.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "ViTac \u2013 Learning to See and Feel: Vision-Tactile Synergy for Embodied AI",
+      "type": "workshop",
+      "date": "2026-04-10",
+      "is_extension": false,
+      "source": "https://shanluo.github.io/ViTacWorkshops/vitac2026",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA workshop index links to this workshop; the workshop page brands it as the \u201c7th ViTac Workshop.\u201d"
+        }
+      ],
+      "raw": "The workshop page lists \u201cSubmission Deadline: Apr 10 2026 11:59PM UTC-0.\u201d",
+      "notes": "Workshop-specific call-for-papers/demos deadline on the official workshop site. Timezone is UTC-0.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "Workshop on Manipulation Robustness: Towards Human-Level Robustness under Real-World Challenges",
+      "type": "workshop",
+      "date": "2026-04-15",
+      "is_extension": false,
+      "source": "https://manipulation-robustness.github.io/icra2026/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA 2026 workshop index links to this workshop page."
+        }
+      ],
+      "raw": "The workshop page states \u201cSubmission deadline: Apr. 15, 2026 (23:59 AoE)\u201d and repeats it in the timeline.",
+      "notes": "Workshop-specific paper/extended-abstract deadline on the official workshop site. Timezone is AoE.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "ICRA",
+      "title": "Workshop on Reinforcement Learning in the Era of Imitation Learning",
+      "type": "workshop",
+      "date": "2026-03-20",
+      "is_extension": false,
+      "source": "https://rl4il-icra.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-icra.org/workshops-and-tutorials/",
+          "kind": "website",
+          "note": "Official ICRA 2026 workshop index links to this workshop page."
+        }
+      ],
+      "raw": "The workshop page lists \u201cPaper Submission Deadline: Mar 20, 2026.\u201d",
+      "notes": "Workshop-specific paper deadline from the official workshop page.",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2026-03-20"
+    },
+    {
+      "conference": "IROS",
+      "title": "5th Workshop on Future of Construction",
+      "type": "unavailable",
+      "date": "",
+      "is_extension": false,
+      "source": "https://construction-robots.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-iros.org/",
+          "kind": "website",
+          "note": "The workshop page links back to the official IROS 2026 site, but no official workshop index with deadlines was publicly discoverable."
+        }
+      ],
+      "raw": "Workshop page says \"Paper/Poster Submission Deadline: TBA\", \"Paper/Poster Acceptance Notification: TBA\", and \"Camera Ready Paper/Poster Deadline: TBA.\"",
+      "notes": "Standalone workshop-specific website found during workshop discovery. No dated submission deadline is published yet.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "IROS",
+      "title": "IROS",
+      "type": "paper",
+      "date": "2026-03-02",
+      "is_extension": false,
+      "source": "https://huggingface.co/spaces/huggingface/ai-deadlines/commit/f5a1d9a7d8b4274d4c60ae755f25de60c466079d",
+      "source_kind": "miscellaneous",
+      "alternate_sources": [
+        {
+          "url": "https://www.wikicfp.com/cfp/servlet/event.showcfp?copyownerid=196971&eventid=191959",
+          "kind": "miscellaneous",
+          "note": "Lists the same Mar 2, 2026 submission deadline and links to the IROS 2026 site."
+        },
+        {
+          "url": "https://ras.papercept.net/conferences/scripts/start.pl",
+          "kind": "submission_portal",
+          "note": "PaperCept listed IROS 2026 and showed a March 3, 2026 last-update timestamp in search results, but the accessible portal page snippet did not expose deadline text."
+        }
+      ],
+      "raw": "Commit message: \"Added paper submission deadline: March 2, 2026\" and \"All deadlines obtained from the official IROS 2026 website.\"",
+      "notes": "Used a secondary source because the official 2026 site was not directly accessible to this crawler. The same date is corroborated by other miscellaneous listings that point to the official edition site.",
+      "conflict_note": "",
+      "change_status": "updated",
+      "change_summary": "Date changed from 2025-03-02 to 2026-03-02.",
+      "previous_date": "2025-03-02"
+    },
+    {
+      "conference": "IROS",
+      "title": "IROS",
+      "type": "supplementary",
+      "date": "2026-03-05",
+      "is_extension": false,
+      "source": "https://huggingface.co/spaces/huggingface/ai-deadlines/commit/f5a1d9a7d8b4274d4c60ae755f25de60c466079d",
+      "source_kind": "miscellaneous",
+      "alternate_sources": [
+        {
+          "url": "https://ras.papercept.net/conferences/scripts/start.pl",
+          "kind": "submission_portal",
+          "note": "PaperCept listed IROS 2026, but the accessible portal page snippet did not expose the video deadline."
+        }
+      ],
+      "raw": "Commit message: \"Added paper video submission deadline: March 5, 2026\" and \"All deadlines obtained from the official IROS 2026 website.\"",
+      "notes": "Mapped the paper video submission deadline to supplementary. This date was only recoverable indirectly from a secondary source that states it copied the official IROS 2026 site.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "IROS",
+      "title": "Perception and Navigation for Marine Robotics",
+      "type": "unavailable",
+      "date": "",
+      "is_extension": false,
+      "source": "https://www.marinerobotics.info/",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "The page identifies the workshop as \"IROS 2026\" and shows \"Date: TBD.\"",
+      "notes": "Standalone workshop page found during workshop discovery. No workshop submission call or dated submission deadline was visible. No official IROS 2026 workshop index page was publicly discoverable, so workshop coverage may be incomplete.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "IROS",
+      "title": "Space Robotics Workshop",
+      "type": "unavailable",
+      "date": "",
+      "is_extension": false,
+      "source": "https://space-robots.org/iros2026/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://2026.ieee-iros.org/",
+          "kind": "website",
+          "note": "The workshop page links to the conference site as its conference website."
+        }
+      ],
+      "raw": "The workshop page lists \"Submission deadline: TBD\", \"Notification: TBD\", and \"Camera-ready deadline: TBD.\"",
+      "notes": "Workshop-specific page confirms an IROS 2026 workshop exists, but no workshop submission dates are published yet.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "NeurIPS",
+      "title": "NeurIPS",
+      "type": "abstract",
+      "date": "2026-05-04",
+      "is_extension": false,
+      "source": "https://neurips.cc/Conferences/2026/CallForPapers",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://neurips.cc/Conferences/2026/Dates",
+          "kind": "website",
+          "note": "Official dates page repeats the main-track abstract deadline as May 04 '26 (Anywhere on Earth)."
+        },
+        {
+          "url": "https://openreview.net/group?id=NeurIPS.cc%2F2026%2FConference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the CFP; consulted, but the accessible page did not expose deadline text."
+        },
+        {
+          "url": "https://openreview.net/venue?id=NeurIPS.cc",
+          "kind": "submission_portal",
+          "note": "OpenReview's NeurIPS venue index showed 2026 Conference and Evaluations and Datasets Track venues, but no 2026 workshop venues were visible during workshop discovery."
+        }
+      ],
+      "raw": "Abstract submission deadline: May 4, 2026 (AOE).",
+      "notes": "Conference-level deadline for NeurIPS 2026 main track. AoE means Anywhere on Earth. Workshop discovery was performed on the official 2026 NeurIPS site and linked submission portal context; as of 2026-04-01, no live official 2026 workshops index, call-for-workshops page, or workshop-specific submission deadline pages were found.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "NeurIPS",
+      "title": "NeurIPS",
+      "type": "paper",
+      "date": "2026-05-06",
+      "is_extension": false,
+      "source": "https://neurips.cc/Conferences/2026/CallForPapers",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://neurips.cc/Conferences/2026/Dates",
+          "kind": "website",
+          "note": "Official dates page repeats the full paper submission deadline as May 06 '26 (Anywhere on Earth)."
+        },
+        {
+          "url": "https://openreview.net/group?id=NeurIPS.cc%2F2026%2FConference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the CFP; consulted, but the accessible page did not expose deadline text."
+        },
+        {
+          "url": "https://neurips.cc/Conferences/2026/MainTrackHandbook",
+          "kind": "website",
+          "note": "Main track handbook confirms all authors need an OpenReview profile by the full paper submission deadline and that papers are uploaded by the submission deadline."
+        }
+      ],
+      "raw": "Full paper submission deadline, including all supplementary materials: May 6, 2026 AOE.",
+      "notes": "Conference-level deadline for NeurIPS 2026 main track. The CFP explicitly says supplementary materials are included in this deadline, so no separate supplementary deadline was emitted. Workshop discovery on official 2026 sources did not surface any published individual workshop pages with separate submission deadlines as of 2026-04-01.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
     },
     {
       "conference": "RSS",
-      "type": "unavailable",
-      "date": "",
-      "raw": "No explicit deadline strings detected automatically.",
-      "source": "https://roboticsconference.org/"
+      "title": "RSS",
+      "type": "abstract",
+      "date": "2026-01-23",
+      "is_extension": false,
+      "source": "https://roboticsconference.org/information/cfp/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://roboticsconference.org/index.html",
+          "kind": "website",
+          "note": "Home page repeats the same abstract deadline in its Important Dates section."
+        },
+        {
+          "url": "https://openreview.net/submissions?venue=roboticsfoundation.org%2FRSS%2F2026%2FConference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the CFP page, but the submissions page does not expose deadline text."
+        }
+      ],
+      "raw": "January 23, 2026 11:59pm AoE Abstract/Title Submission Deadline.",
+      "notes": "Conference-level deadline from the official RSS 2026 Call for Papers page. Timezone is Anywhere on Earth (AoE).",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2026-01-23"
     },
     {
-      "conference": "NeurIPS Datasets & Benchmarks",
-      "type": "unavailable",
-      "date": "",
-      "raw": "No explicit deadline strings detected automatically.",
-      "source": "https://neurips.cc/"
+      "conference": "RSS",
+      "title": "RSS",
+      "type": "paper",
+      "date": "2026-01-30",
+      "is_extension": false,
+      "source": "https://roboticsconference.org/information/cfp/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://roboticsconference.org/index.html",
+          "kind": "website",
+          "note": "Home page repeats the same paper deadline in its Important Dates section."
+        },
+        {
+          "url": "https://openreview.net/submissions?venue=roboticsfoundation.org%2FRSS%2F2026%2FConference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the CFP page, but the submissions page does not expose deadline text."
+        }
+      ],
+      "raw": "January 30, 2026 11:59pm AoE Paper Submission Deadline.",
+      "notes": "Conference-level deadline from the official RSS 2026 Call for Papers page. Timezone is Anywhere on Earth (AoE).",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2026-01-30"
+    },
+    {
+      "conference": "RSS",
+      "title": "RSS",
+      "type": "supplementary",
+      "date": "2026-02-06",
+      "is_extension": false,
+      "source": "https://roboticsconference.org/information/cfp/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://roboticsconference.org/index.html",
+          "kind": "website",
+          "note": "Home page repeats the same supplementary-material deadline in its Important Dates section."
+        },
+        {
+          "url": "https://openreview.net/submissions?venue=roboticsfoundation.org%2FRSS%2F2026%2FConference",
+          "kind": "submission_portal",
+          "note": "Official submission portal linked from the CFP page, but the submissions page does not expose deadline text."
+        }
+      ],
+      "raw": "February 6, 2026 11:59pm AoE Supplementary Material Submission Deadline.",
+      "notes": "Conference-level deadline from the official RSS 2026 Call for Papers page. Timezone is Anywhere on Earth (AoE).",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2026-02-06"
+    },
+    {
+      "conference": "RSS",
+      "title": "RSS",
+      "type": "rebuttal",
+      "date": "2026-03-27",
+      "is_extension": false,
+      "source": "https://roboticsconference.org/information/cfp/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://roboticsconference.org/index.html",
+          "kind": "website",
+          "note": "Home page repeats the same rebuttal deadline in its Important Dates section."
+        }
+      ],
+      "raw": "March 27, 2026 11:59pm AoE Rebuttal Submission Deadline.",
+      "notes": "Conference-level rebuttal deadline from the official RSS 2026 Call for Papers page. Timezone is Anywhere on Earth (AoE).",
+      "conflict_note": "",
+      "change_status": "unchanged",
+      "change_summary": "",
+      "previous_date": "2026-03-27"
+    },
+    {
+      "conference": "RSS",
+      "title": "RSS Pioneers",
+      "type": "workshop",
+      "date": "2026-02-20",
+      "is_extension": false,
+      "source": "https://sites.google.com/view/rsspioneers2026/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://roboticsconference.org/program/pioneers/",
+          "kind": "website",
+          "note": "Official RSS 2026 Pioneers page repeats the same February 20, 2026 11:59pm AoE application deadline and links to the workshop website."
+        },
+        {
+          "url": "https://openreview.net/venue?id=roboticsfoundation.org%2FRSS",
+          "kind": "submission_portal",
+          "note": "RSS OpenReview venue index lists RSS 2026 Workshop Pioneers, but no deadline text is shown there."
+        },
+        {
+          "url": "https://openreview.net/submissions?venue=roboticsfoundation.org%2FRSS%2F2026%2FWorkshop%2FPioneers",
+          "kind": "submission_portal",
+          "note": "OpenReview submissions page exists for RSS 2026 Workshop Pioneers, but it does not expose deadline text."
+        }
+      ],
+      "raw": "Important Dates (anywhere-on-earth): Applications due: February 20, 2026.",
+      "notes": "Workshop-specific deadline from the official RSS Pioneers 2026 website, linked by the RSS 2026 program page. The RSS program page specifies 11:59pm AoE for the same date. RSS Pioneers is the only named 2026 workshop-like event with its own published submission/application deadline that was visible on the official site/OpenReview during workshop discovery.",
+      "conflict_note": "",
+      "change_status": "updated",
+      "change_summary": "Source or conflict details changed in the latest refresh.",
+      "previous_date": "2026-02-20"
+    },
+    {
+      "conference": "RSS",
+      "title": "RSS Workshops/Tutorials",
+      "type": "workshop",
+      "date": "2026-02-12",
+      "is_extension": false,
+      "source": "https://roboticsconference.org/information/cfw/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://openreview.net/submissions?venue=roboticsfoundation.org%2FRSS%2F2026%2FWorkshop_Proposal",
+          "kind": "submission_portal",
+          "note": "Official OpenReview workshop-proposal venue linked from the call for workshops page; the submissions page does not expose deadline text."
+        },
+        {
+          "url": "https://openreview.net/venue?id=roboticsfoundation.org%2FRSS",
+          "kind": "submission_portal",
+          "note": "RSS venue index lists the 2026 Workshop Proposal venue."
+        }
+      ],
+      "raw": "Proposals should be submitted by February 12, 2026, 23:59 AOE; Important Dates lists February 12, 2026 11:59pm AoE Workshop/Tutorial Proposal Submission Deadline.",
+      "notes": "This is the organizer-facing workshop/tutorial proposal deadline on the official RSS 2026 Call for Workshops page. Timezone is Anywhere on Earth (AoE). As of April 1, 2026, the official site did not yet expose a broader accepted-workshops listing for 2026.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Adaptive Intelligence in Adaptive Bodies: AI for General Shape-Changing Robots",
+      "type": "workshop",
+      "date": "2026-03-15",
+      "is_extension": false,
+      "source": "https://www.shapemorphingrobot.com/call-for-contributions",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Poster Submission deadline: Mar. 15th; lightning talk submissions are also due by Mar. 15th.",
+      "notes": "The workshop page uses one deadline for poster/demo and lightning-talk contributions submitted via the same form, so this is recorded as a generic workshop contribution deadline.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Exploiting Fluids and Embodied Intelligence in Soft Robotics",
+      "type": "workshop",
+      "date": "2026-03-23",
+      "is_extension": false,
+      "source": "https://www.epfl.ch/labs/create/robosoft-fluids-ei/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Calls for Contributions: Call for Flash Pitches/Posters (due 23rd March, 2026); the deadline for contribution submission is 23rd March 2026.",
+      "notes": "Workshop-specific contribution deadline for flash-pitch/poster submissions on the official EPFL-hosted workshop page.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Living with Robots Safely: Embodying Asimov\u2019s First Law through Soft Robotics",
+      "type": "workshop",
+      "date": "2026-03-24",
+      "is_extension": true,
+      "source": "https://sq2100.com/rs26-safety",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Important Dates: Submission Deadline: March 18, 2026 March 24, 2026.",
+      "notes": "The official workshop page invites poster presentations and live demonstrations. The page presents two submission dates in sequence; treated March 24, 2026 as the updated effective deadline.",
+      "conflict_note": "The workshop page shows both March 18, 2026 and March 24, 2026 as submission deadlines, without explaining the replacement. March 24, 2026 was used as the likely updated deadline.",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Minds and Bodies: Co-Design for the Future of Soft Manipulation",
+      "type": "abstract",
+      "date": "2026-03-21",
+      "is_extension": false,
+      "source": "https://robosoft26-codesign-ws.csail.mit.edu/call-for-contributions",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Extended Abstract Submission Instructions: Submission deadline: March 21, 2026.",
+      "notes": "Workshop call states submissions for both the emerging ideas track and co-design challenge require an extended abstract.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Monolithic Soft Systems: Co-design components, tools, materials, and fabrication strategies for next-generation robotics",
+      "type": "workshop",
+      "date": "2026-03-10",
+      "is_extension": false,
+      "source": "https://softperceptiverobots.it/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Call for Contributions is now open. Deadline: March 10th, 2026.",
+      "notes": "Workshop-specific contribution deadline published on the official workshop homepage linked from RoboSoft 2026.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Multi-Stable and Origami-based Soft Robots",
+      "type": "abstract",
+      "date": "2026-03-30",
+      "is_extension": true,
+      "source": "https://www.bimultistabilityworkshop.com/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Timeline lists March 01, 2026 as submission deadline and March 30, 2026 as extended submission deadline.",
+      "notes": "Recorded the effective extended abstract deadline from the workshop's call for abstract section. The page also lists the original March 1, 2026 deadline and March 31, 2026 notification for extended submissions.",
+      "conflict_note": "The workshop page lists both the original March 1, 2026 submission deadline and a later March 30, 2026 extended submission deadline; the later date was treated as current.",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "RoboSoft",
+      "type": "paper",
+      "date": "2025-10-31",
+      "is_extension": true,
+      "source": "https://www.robosoft2026.org/calls/call-for-papers/",
+      "source_kind": "website",
+      "alternate_sources": [],
+      "raw": "Contributed paper submission: October 15, 2025 -> 8:00 AM on October 31, 2025 (GMT, UTC-0) / 11:59 PM on Oct. 30, 2025 (PST), firm deadline.",
+      "notes": "Official RoboSoft 2026 call for papers page. Marked as an extension because the earlier October 15, 2025 date is struck through and replaced.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "RoboSoft",
+      "type": "workshop",
+      "date": "2025-11-15",
+      "is_extension": true,
+      "source": "https://www.robosoft2026.org/calls/call-for-workshops/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://openreview.net/submissions?venue=IEEE.org%2FRoboSoft%2F2026%2FWorkshop_Proposals",
+          "kind": "submission_portal",
+          "note": "Official linked OpenReview venue exists, but the page shows no submissions and no separate deadline text."
+        }
+      ],
+      "raw": "Workshops/Tutorials proposals: October 31, 2025 -> November 15, 2025.",
+      "notes": "Conference-level workshop/tutorial proposal deadline from the official call-for-workshops page. Marked as an extension because the earlier date is struck through and replaced.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "RoboSoft",
+      "type": "abstract",
+      "date": "2026-02-16",
+      "is_extension": false,
+      "source": "https://www.robosoft2026.org/calls/call-for-extended-abstracts/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/calls/call-for-papers/",
+          "kind": "website",
+          "note": "The broader call-for-papers page summarizes extended abstracts as February 15, 2026 without the GMT conversion details."
+        }
+      ],
+      "raw": "Extended abstracts submission: 8:00 AM on February 16, 2026 (GMT, UTC-0) = 11:59 PM on February 15, 2026 (PST).",
+      "notes": "Used the dedicated extended-abstracts page because it is more specific than the general call-for-papers summary. The page gives both GMT and PST equivalents; normalized date follows the stated GMT submission date.",
+      "conflict_note": "The general call-for-papers page says February 15, 2026 for extended abstracts, while the dedicated extended-abstracts page states 8:00 AM GMT on February 16, 2026 (equivalent to 11:59 PM PST on February 15, 2026). The dedicated page was treated as authoritative.",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Soft Robotics Meets the Sea: Novel Robot Design for Harsh Environments",
+      "type": "abstract",
+      "date": "2026-03-15",
+      "is_extension": false,
+      "source": "https://workshop.pneutoolkit.com/robosoft2026/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Call for Posters: We welcome submissions of extended abstracts. Deadline March 15, 2026.",
+      "notes": "Workshop-specific poster session call requires a one-page extended abstract.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
+    },
+    {
+      "conference": "RoboSoft",
+      "title": "Towards Reproducibility in Soft Robotics: Addressing Concerns in Manufacturing, Testing, and Simulation",
+      "type": "abstract",
+      "date": "2026-03-15",
+      "is_extension": false,
+      "source": "https://softrobotics-mts.github.io/",
+      "source_kind": "website",
+      "alternate_sources": [
+        {
+          "url": "https://openreview.net/group?id=IEEE.org%2FRoboSoft%2F2026%2FWorkshop%2FReproducibility_Soft_Robotics",
+          "kind": "submission_portal",
+          "note": "Official OpenReview submission venue is linked from the workshop site, but the page did not expose deadline text in the browsable view."
+        },
+        {
+          "url": "https://www.robosoft2026.org/program/workshops/",
+          "kind": "website",
+          "note": "Official RoboSoft workshops index links this workshop website."
+        }
+      ],
+      "raw": "Submission information: Format: 2-page abstract; Submission deadline: March 15, 2026 GMT (UTC-0).",
+      "notes": "Workshop-specific call for posters on the official workshop page. Deadline timezone is explicitly GMT/UTC-0.",
+      "conflict_note": "",
+      "change_status": "new",
+      "change_summary": "New deadline entry in the latest refresh.",
+      "previous_date": ""
     }
   ]
 }

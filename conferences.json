@@ -1,7 +1,64 @@
 [
-  {"name": "IROS", "url": "https://www.ieee-iros.org/"},
-  {"name": "ICRA", "url": "https://2026.ieee-icra.org/"},
-  {"name": "CoRL", "url": "https://www.corl.org/"},
-  {"name": "RSS", "url": "https://roboticsconference.org/"},
-  {"name": "NeurIPS Datasets & Benchmarks", "url": "https://neurips.cc/"}
+  {
+    "name": "IROS",
+    "series_url": "https://www.ieee-iros.org/",
+    "edition_url": "https://www.ieee-iros.org/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=IEEE.org/IROS/2026/Workshop"
+    ]
+  },
+  {
+    "name": "ICRA",
+    "series_url": "https://www.ieee-icra.org/",
+    "edition_url": "https://2026.ieee-icra.org/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=IEEE.org/ICRA/2026/Workshop",
+      "https://openreview.net/venue?id=IEEE.org"
+    ]
+  },
+  {
+    "name": "CoRL",
+    "series_url": "https://www.corl.org/",
+    "edition_url": "https://www.corl.org/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=robot-learning.org/CoRL/2025/Workshop",
+      "https://openreview.net/venue?id=robot-learning.org/CoRL"
+    ]
+  },
+  {
+    "name": "RSS",
+    "series_url": "https://roboticsconference.org/",
+    "edition_url": "https://roboticsconference.org/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=roboticsfoundation.org/RSS/2026/Workshop",
+      "https://openreview.net/venue?id=roboticsfoundation.org/RSS"
+    ]
+  },
+  {
+    "name": "Humanoids",
+    "series_url": "https://humanoids.global/",
+    "edition_url": "https://humanoids.global/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=IEEE.org/RAS/Humanoids/2025/Workshop",
+      "https://openreview.net/venue?id=IEEE.org"
+    ]
+  },
+  {
+    "name": "RoboSoft",
+    "series_url": "https://softroboticsconference.org/",
+    "edition_url": "https://www.robosoft2026.org/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=IEEE.org/RoboSoft/2026/Workshop",
+      "https://openreview.net/group?id=IEEE.org/RoboSoft/2026/Workshop_Proposals"
+    ]
+  },
+  {
+    "name": "NeurIPS",
+    "series_url": "https://neurips.cc/",
+    "edition_url": "https://neurips.cc/",
+    "discovery_urls": [
+      "https://openreview.net/group?id=NeurIPS.cc/2025/Workshop",
+      "https://openreview.net/venue?id=NeurIPS.cc"
+    ]
+  }
 ]
