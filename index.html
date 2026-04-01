@@ -11,8 +11,28 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="container">
-      <header class="hero">
+    <main class="page-shell">
+      <aside class="page-sidebar" aria-label="Page navigation">
+        <div class="sidebar-card">
+          <p class="sidebar-kicker">Navigate</p>
+          <nav class="sidebar-nav">
+            <a href="#overview">Overview</a>
+            <a href="#timeline-section">Next Up</a>
+            <details class="sidebar-group">
+              <summary>Upcoming Dates</summary>
+              <div id="sidebar-months" class="sidebar-subnav"></div>
+            </details>
+            <details class="sidebar-group">
+              <summary>All Entries</summary>
+              <div id="sidebar-conferences" class="sidebar-subnav"></div>
+            </details>
+            <a href="#archive-section">Past Deadlines</a>
+          </nav>
+        </div>
+      </aside>
+
+      <div class="container">
+      <header id="overview" class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Conference Calendar</p>
           <h1>Robot Learning Deadlines</h1>
@@ -67,7 +87,7 @@
 
       <section id="change-banner" class="change-banner" aria-live="polite"></section>
 
-      <section class="panel timeline-panel">
+      <section id="timeline-section" class="panel timeline-panel">
         <div class="section-heading">
           <div>
             <p class="section-kicker">Timeline</p>
@@ -78,7 +98,7 @@
         <div id="timeline" class="timeline" aria-live="polite"></div>
       </section>
 
-      <section class="panel">
+      <section id="calendar-section" class="panel">
         <div class="section-heading">
           <div>
             <p class="section-kicker">Calendar</p>
@@ -89,7 +109,7 @@
         <div id="calendar" class="calendar" aria-live="polite"></div>
       </section>
 
-      <section class="panel">
+      <section id="entries-section" class="panel">
         <div class="section-heading">
           <div>
             <p class="section-kicker">Reference</p>
@@ -100,7 +120,7 @@
         <section id="grid" class="grid" aria-live="polite"></section>
       </section>
 
-      <details class="panel archive-panel">
+      <details id="archive-section" class="panel archive-panel">
         <summary class="archive-summary">
           <span>
             <span class="section-kicker">Archive</span>
@@ -110,6 +130,7 @@
         </summary>
         <section id="past-grid" class="grid past-grid" aria-live="polite"></section>
       </details>
+      </div>
     </main>
 
     <dialog id="item-modal" class="item-modal">

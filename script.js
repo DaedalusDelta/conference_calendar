@@ -13,6 +13,8 @@ const statUrgent = document.getElementById('stat-urgent');
 const statExtensions = document.getElementById('stat-extensions');
 const statConflicts = document.getElementById('stat-conflicts');
 const filterChips = Array.from(document.querySelectorAll('.filter-chip'));
+const sidebarMonths = document.getElementById('sidebar-months');
+const sidebarConferences = document.getElementById('sidebar-conferences');
 
 let allItems = [];
 let activeFilter = 'all';
@@ -24,6 +26,13 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+
+function slugify(value) {
+  return String(value ?? '')
+    .toLowerCase()
+    .replaceAll(/[^a-z0-9]+/g, '-')
+    .replaceAll(/^-+|-+$/g, '');
 }
 
 function parseDate(value) {
@@ -168,6 +177,21 @@ function getSourceConfidence(item) {
 
 function renderEmptyState(target, message) {
   target.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
+}
+
+function renderSidebarLinks(target, entries, emptyLabel, prefix, sectionId, sectionLabel) {
+  if (!target) return;
+  if (!entries.length) {
+    target.innerHTML = `<span class="sidebar-empty">${escapeHtml(emptyLabel)}</span>`;
+    return;
+  }
+
+  const links = [];
+  if (sectionId && sectionLabel) {
+    links.push(`<a href="#${escapeHtml(sectionId)}">${escapeHtml(sectionLabel)}</a>`);
+  }
+  links.push(...entries.map((entry) => `<a href="#${escapeHtml(prefix + entry.id)}">${escapeHtml(entry.label)}</a>`));
+  target.innerHTML = links.join('');
 }
 
 function renderChangeBanner(summary) {
@@ -382,6 +406,7 @@ function renderCalendar(items) {
 
   if (!datedItems.length) {
     renderEmptyState(calendar, 'No upcoming dated deadlines are available for the current filter.');
+    renderSidebarLinks(sidebarMonths, [], 'No visible months', 'month-', 'calendar-section', 'Section top');
     return;
   }
 
@@ -396,6 +421,7 @@ function renderCalendar(items) {
     .map(([monthKey, monthItems], monthIndex) => {
       const monthLabel = formatMonthKey(`${monthKey}-01`);
       const datedCount = monthItems.length;
+      const monthId = `month-${monthKey}`;
       const listMarkup = monthItems
         .map((item) => {
           const date = parseDate(item.date);
@@ -439,7 +465,7 @@ function renderCalendar(items) {
         .join('');
 
       return `
-        <section class="month-card" style="animation-delay: ${monthIndex * 70}ms">
+        <section id="${escapeHtml(monthId)}" class="month-card" style="animation-delay: ${monthIndex * 70}ms">
           <div class="month-card-header">
             <h3>${escapeHtml(monthLabel)}</h3>
             <span class="month-count">${datedCount} deadline${datedCount === 1 ? '' : 's'}</span>
@@ -451,6 +477,17 @@ function renderCalendar(items) {
     .join('');
 
   attachItemOpenHandlers(calendar);
+  renderSidebarLinks(
+    sidebarMonths,
+    Array.from(groups.keys()).map((monthKey) => ({
+      id: monthKey,
+      label: formatMonthKey(`${monthKey}-01`),
+    })),
+    'No visible months',
+    'month-',
+    'calendar-section',
+    'Section top',
+  );
 }
 
 function renderGroupedEntries(target, items, emptyMessage) {
@@ -465,6 +502,9 @@ function renderGroupedEntries(target, items, emptyMessage) {
 
   if (!sortedItems.length) {
     renderEmptyState(target, emptyMessage);
+    if (target === grid) {
+      renderSidebarLinks(sidebarConferences, [], 'No visible conferences', 'conference-', 'entries-section', 'Section top');
+    }
     return;
   }
 
@@ -536,7 +576,7 @@ function renderGroupedEntries(target, items, emptyMessage) {
         .join('');
 
       return `
-        <section class="group-block">
+        <section id="${escapeHtml(`conference-${slugify(conference)}`)}" class="group-block">
           <header class="group-header">
             <div>
               <h3>${escapeHtml(conference)}</h3>
@@ -569,6 +609,22 @@ function renderGroupedEntries(target, items, emptyMessage) {
     .join('');
 
   attachItemOpenHandlers(target);
+  if (target === grid) {
+    renderSidebarLinks(
+      sidebarConferences,
+      Array.from(laneGrouped.values())
+        .flatMap((grouped) => Array.from(grouped.keys()))
+        .filter((conference, index, list) => list.indexOf(conference) === index)
+        .map((conference) => ({
+          id: slugify(conference),
+          label: conference,
+        })),
+      'No visible conferences',
+      'conference-',
+      'entries-section',
+      'Section top',
+    );
+  }
 }
 
 function renderEntries(items) {
