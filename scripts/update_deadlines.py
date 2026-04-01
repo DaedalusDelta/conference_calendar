@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import json
 import os
+import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 
 ROOT = Path(__file__).resolve().parents[1]
 CONF_FILE = ROOT / "conferences.json"
@@ -13,6 +15,7 @@ DATA_DIR = ROOT / "data"
 CACHE_FILE = DATA_DIR / "deadlines.json"
 DEFAULT_EDITION_YEAR = datetime.now(timezone.utc).year
 DEFAULT_OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5")
+MAX_OPENAI_RETRIES = int(os.environ.get("OPENAI_MAX_RETRIES", "4"))
 
 OUTPUT_SCHEMA = {
     "type": "object",
@@ -112,6 +115,22 @@ def load_previous_payload() -> dict:
         return {}
 
 
+def get_previous_items_by_conference(previous_payload: dict) -> dict[str, list[dict]]:
+    previous_items = previous_payload.get("items")
+    if not isinstance(previous_items, list):
+        return {}
+
+    grouped: dict[str, list[dict]] = {}
+    for item in previous_items:
+        if not isinstance(item, dict):
+            continue
+        conference = str(item.get("conference", "")).strip()
+        if not conference:
+            continue
+        grouped.setdefault(conference, []).append(item)
+    return grouped
+
+
 def resolve_target_year(conference: dict) -> int:
     raw_year = conference.get("year")
     if isinstance(raw_year, int):
@@ -130,6 +149,13 @@ def get_openai_client() -> OpenAI:
     return OpenAI(api_key=api_key)
 
 
+def parse_rate_limit_wait_seconds(message: str) -> float:
+    match = re.search(r"Please try again in ([0-9]+(?:\.[0-9]+)?)s", message)
+    if match:
+        return max(float(match.group(1)), 1.0)
+    return 8.0
+
+
 def run_openai_structured(
     prompt: str,
     schema: dict,
@@ -138,22 +164,36 @@ def run_openai_structured(
 ) -> dict:
     client = get_openai_client()
 
-    try:
-        response = client.responses.create(
-            model=DEFAULT_OPENAI_MODEL,
-            tools=[{"type": "web_search_preview"}],
-            input=prompt,
-            text={
-                "format": {
-                    "type": "json_schema",
-                    "name": schema_name,
-                    "schema": schema,
-                    "strict": True,
-                }
-            },
-        )
-    except Exception as exc:
-        raise RuntimeError(f"{error_prefix}: {exc}") from exc
+    response = None
+    for attempt in range(MAX_OPENAI_RETRIES + 1):
+        try:
+            response = client.responses.create(
+                model=DEFAULT_OPENAI_MODEL,
+                tools=[{"type": "web_search_preview"}],
+                input=prompt,
+                text={
+                    "format": {
+                        "type": "json_schema",
+                        "name": schema_name,
+                        "schema": schema,
+                        "strict": True,
+                    }
+                },
+            )
+            break
+        except RateLimitError as exc:
+            if attempt >= MAX_OPENAI_RETRIES:
+                raise RuntimeError(f"{error_prefix}: {exc}") from exc
+            wait_seconds = parse_rate_limit_wait_seconds(str(exc)) + attempt
+            log_progress(
+                f"{error_prefix}: rate limit hit for {schema_name}; waiting {wait_seconds:.1f}s before retry {attempt + 1}/{MAX_OPENAI_RETRIES}."
+            )
+            time.sleep(wait_seconds)
+        except Exception as exc:
+            raise RuntimeError(f"{error_prefix}: {exc}") from exc
+
+    if response is None:
+        raise RuntimeError(f"{error_prefix}: OpenAI request did not produce a response.")
 
     output_text = getattr(response, "output_text", "") or ""
     if not output_text:
@@ -306,14 +346,21 @@ Required workshop discovery procedure:
 1. Start at the Edition URL.
 2. If High-priority discovery URLs are provided above, inspect all of them before concluding workshop discovery is complete.
 3. Find the workshops landing page, workshop program page, or call-for-workshops page if it exists.
-4. From there, inspect individual workshop pages when they appear to have separate submission calls or deadlines.
-5. If the conference has no workshops page or no workshop-specific deadlines, say so in the notes of the relevant unavailable item.
-6. Do not skip workshop discovery. It is part of the task even if conference-level deadlines are already found.
+4. If a workshop index or listing page is available, enumerate the listed workshops explicitly and treat that list as the coverage target.
+5. From that list, inspect the individual workshop pages or linked submission portals one by one when they appear to have separate submission calls or deadlines.
+6. Do not stop early because you found a few valid workshop deadlines. Keep checking the remaining listed workshops until the index has been exhausted.
+7. If some listed workshops cannot be inspected successfully, mention that incompleteness in the notes of a relevant item.
+8. If a workshop page exists but no date is visible, prefer a workshop-specific unavailable item over silently dropping the workshop when an authoritative page can be cited.
+9. If the conference has no workshops page or no workshop-specific deadlines, say so in the notes of the relevant unavailable item.
+10. Do not skip workshop discovery. It is part of the task even if conference-level deadlines are already found.
 
 Coverage requirement:
+- Completeness matters because missed workshops can cause users to miss submission opportunities.
 - When a discovery URL is a workshop index page, enumerate the workshop entries listed there and inspect as many of those workshop pages or linked submission pages as needed to capture their individual deadlines.
+- Treat workshop enumeration as an exhaustive coverage task, not a sampling task.
 - Do not stop after finding only a few workshops if the index clearly lists many more.
-- If a workshop is listed on the index but no deadline is visible on its page, you may omit that workshop unless you can support an unavailable item with an authoritative workshop-specific source.
+- If a workshop is listed on the index but no deadline is visible on its page, prefer emitting an unavailable item for that workshop when you have an authoritative workshop-specific page or portal URL.
+- If workshop coverage is clearly incomplete, say that explicitly in notes instead of pretending coverage is complete.
 
 Research procedure:
 1. Start at the Edition URL provided above.
@@ -377,6 +424,7 @@ Completeness rules:
 - Emit one item per distinct deadline you can support with evidence.
 - If a conference has multiple deadline types, emit multiple items.
 - If individual workshops have separate published deadlines, emit separate items for them with distinct titles.
+- If a workshop index page clearly lists many workshops, your output should reflect broad coverage of that list rather than only a small hand-picked subset.
 - If you find workshop deadlines but not a conference-level deadline, still emit the workshop items and optionally a conference-level unavailable item if that is useful.
 - Only emit a single unavailable item for the conference when no reliable conference-level or workshop-level deadline could be found anywhere official.
 - Never omit the target conference entirely.
@@ -636,9 +684,37 @@ def log_progress(message: str) -> None:
     print(message, flush=True)
 
 
+def should_preserve_previous_items(
+    conference_name: str,
+    new_items: list[dict],
+    previous_items: list[dict],
+) -> bool:
+    if not previous_items:
+        return False
+
+    if len(new_items) >= len(previous_items):
+        return False
+
+    if not new_items:
+        log_progress(
+            f"Preserving previous items for {conference_name}: refresh returned no items."
+        )
+        return True
+
+    if len(new_items) <= max(1, len(previous_items) // 2):
+        log_progress(
+            f"Preserving previous items for {conference_name}: refresh returned "
+            f"{len(new_items)} item(s) versus {len(previous_items)} previously."
+        )
+        return True
+
+    return False
+
+
 def update_deadlines() -> dict:
     conferences = load_conferences()
     previous_payload = load_previous_payload()
+    previous_items_by_conference = get_previous_items_by_conference(previous_payload)
     aggregated_items: list[dict] = []
     total = len(conferences)
     log_progress(f"Starting deadline refresh for {total} conferences...")
@@ -654,7 +730,17 @@ def update_deadlines() -> dict:
         )
         agent_payload = run_openai_agent(resolved_conference)
         conference_items = agent_payload.get("items")
-        if isinstance(conference_items, list):
+        if not isinstance(conference_items, list):
+            conference_items = []
+
+        previous_items = previous_items_by_conference.get(conference_name, [])
+        if should_preserve_previous_items(conference_name, conference_items, previous_items):
+            aggregated_items.extend(previous_items)
+            log_progress(
+                f"[{index}/{total}] Reused {len(previous_items)} previously saved item"
+                f"{'' if len(previous_items) == 1 else 's'} for {conference_name}."
+            )
+        elif conference_items:
             aggregated_items.extend(conference_items)
             log_progress(
                 f"[{index}/{total}] Collected {len(conference_items)} item"

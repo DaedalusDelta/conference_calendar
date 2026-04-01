@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 .env
 .env.*
+tmp_*response*.txt
+responses/*.json
+responses/*.txt

@@ -30,6 +30,9 @@ Notes:
 - The API key is not stored in the repo.
 - `.env` files are git-ignored to reduce the chance of accidentally committing secrets.
 - You can override the model with `OPENAI_MODEL`, otherwise the updater defaults to `gpt-5`.
+- If you want to use the ChatGPT web UI instead of the API, use the reusable prompt in `prompts/web_deadline_research_prompt.md`.
+- For manual web-UI JSON responses, merge them with `python scripts/merge_manual_response.py <response_file>` so conference-level titles are normalized and obvious duplicates are collapsed.
+- Store manual web-UI responses under `responses/` with one conference per file; scratch files like `tmp_*response*.txt` are git-ignored.
 
 ## Conferences
 

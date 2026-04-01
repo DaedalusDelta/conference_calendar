@@ -43,6 +43,11 @@ function isPastDeadline(value) {
   return date < getTodayStart();
 }
 
+function isWithinPastDays(value, daysBack) {
+  const days = getDaysUntil(value);
+  return days !== null && days < 0 && days >= -daysBack;
+}
+
 function isApproachingThisMonth(value) {
   const date = parseDate(value);
   if (!date) return false;
@@ -144,7 +149,9 @@ function matchesActiveFilter(item) {
 
 function getLaneLabel(item) {
   const days = getDaysUntil(item.date);
-  if (days === null || days < 0) return 'Archive';
+  if (days === null) return 'Archive';
+  if (days < -7) return 'Archive';
+  if (days < 0) return 'Past 7 Days';
   if (days <= 0) return 'Today';
   if (days <= 7) return 'This Week';
   if (days <= 31) return 'This Month';
@@ -388,6 +395,7 @@ function renderCalendar(items) {
   calendar.innerHTML = Array.from(groups.entries())
     .map(([monthKey, monthItems], monthIndex) => {
       const monthLabel = formatMonthKey(`${monthKey}-01`);
+      const datedCount = monthItems.length;
       const listMarkup = monthItems
         .map((item) => {
           const date = parseDate(item.date);
@@ -432,7 +440,10 @@ function renderCalendar(items) {
 
       return `
         <section class="month-card" style="animation-delay: ${monthIndex * 70}ms">
-          <h3>${escapeHtml(monthLabel)}</h3>
+          <div class="month-card-header">
+            <h3>${escapeHtml(monthLabel)}</h3>
+            <span class="month-count">${datedCount} deadline${datedCount === 1 ? '' : 's'}</span>
+          </div>
           <div class="month-list">${listMarkup}</div>
         </section>
       `;
@@ -466,7 +477,7 @@ function renderGroupedEntries(target, items, emptyMessage) {
     conferenceGroups.get(item.conference).push(item);
   }
 
-  const laneOrder = ['Today', 'This Week', 'This Month', 'Later', 'Archive'];
+  const laneOrder = ['Past 7 Days', 'Today', 'This Week', 'This Month', 'Later', 'Archive'];
   target.innerHTML = Array.from(laneGrouped.entries())
     .sort((a, b) => laneOrder.indexOf(a[0]) - laneOrder.indexOf(b[0]))
     .map(([lane, grouped], laneIndex) => {
@@ -493,7 +504,8 @@ function renderGroupedEntries(target, items, emptyMessage) {
             'card',
             item.date ? '' : 'muted',
             isApproachingThisMonth(item.date) ? 'urgent' : '',
-            isPastDeadline(item.date) ? 'past' : '',
+            isPastDeadline(item.date) && !isWithinPastDays(item.date, 7) ? 'past' : '',
+            isWithinPastDays(item.date, 7) ? 'recent-past' : '',
           ]
             .filter(Boolean)
             .join(' ');
@@ -560,12 +572,12 @@ function renderGroupedEntries(target, items, emptyMessage) {
 }
 
 function renderEntries(items) {
-  const activeItems = items.filter((item) => !isPastDeadline(item.date));
+  const activeItems = items.filter((item) => !isPastDeadline(item.date) || isWithinPastDays(item.date, 7));
   renderGroupedEntries(grid, activeItems, 'No active conferences matched the current filter.');
 }
 
 function renderPastEntries(items) {
-  const pastItems = items.filter((item) => isPastDeadline(item.date));
+  const pastItems = items.filter((item) => isPastDeadline(item.date) && !isWithinPastDays(item.date, 7));
   pastCount.textContent = `${pastItems.length} item${pastItems.length === 1 ? '' : 's'}`;
   renderGroupedEntries(pastGrid, pastItems, 'No past deadlines matched the current filter.');
 }

@@ -369,8 +369,8 @@ a:hover {
 
 .calendar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
 .timeline {
@@ -449,12 +449,27 @@ a:hover {
 }
 
 .month-card h3 {
-  margin: 0 0 16px;
+  margin: 0;
   font-size: 1.35rem;
+}
+
+.month-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.month-count {
+  color: var(--soft);
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .month-list {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 12px;
 }
 
@@ -471,6 +486,8 @@ a:hover {
   border: 0;
   font: inherit;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(88, 68, 49, 0.08);
 }
 
 .calendar-item.urgent {
@@ -554,6 +571,13 @@ a:hover {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--soft);
+}
+
+.lane-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(88, 68, 49, 0.12), transparent);
 }
 
 .group-block {
@@ -662,6 +686,11 @@ a:hover {
 
 .card.past {
   opacity: 0.72;
+}
+
+.card.recent-past {
+  border-color: rgba(88, 68, 49, 0.2);
+  background: linear-gradient(180deg, rgba(247, 243, 236, 0.98), rgba(255, 251, 245, 0.98));
 }
 
 .card.muted {
@@ -980,6 +1009,10 @@ a:hover {
 
   .calendar-item {
     grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .month-list {
+    grid-template-columns: 1fr;
   }
 
   .timeline {
