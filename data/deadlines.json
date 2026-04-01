@@ -1,57 +1,41 @@
 {
-  "format_version": "2.0",
-  "updated_at": "2026-04-01T04:06:08.530401+00:00",
+  "updated_at": "2026-04-01T03:51:05.651306+00:00",
   "count": 5,
   "items": [
     {
       "conference": "IROS",
-      "venue_type": "conference",
-      "deadline_type": "unavailable",
+      "type": "unavailable",
       "date": "",
-      "is_extension": false,
-      "source_page": "homepage",
-      "source": "https://www.ieee-iros.org/",
-      "snippet": "No explicit deadline strings detected automatically."
+      "raw": "No explicit deadline strings detected automatically.",
+      "source": "https://www.ieee-iros.org/"
     },
     {
       "conference": "ICRA",
-      "venue_type": "conference",
-      "deadline_type": "unavailable",
+      "type": "unavailable",
       "date": "",
-      "is_extension": false,
-      "source_page": "homepage",
-      "source": "https://2026.ieee-icra.org/",
-      "snippet": "No explicit deadline strings detected automatically."
+      "raw": "No explicit deadline strings detected automatically.",
+      "source": "https://2026.ieee-icra.org/"
     },
     {
       "conference": "CoRL",
-      "venue_type": "conference",
-      "deadline_type": "unavailable",
+      "type": "unavailable",
       "date": "",
-      "is_extension": false,
-      "source_page": "homepage",
-      "source": "https://www.corl.org/",
-      "snippet": "No explicit deadline strings detected automatically."
+      "raw": "No explicit deadline strings detected automatically.",
+      "source": "https://www.corl.org/"
     },
     {
       "conference": "RSS",
-      "venue_type": "conference",
-      "deadline_type": "unavailable",
+      "type": "unavailable",
       "date": "",
-      "is_extension": false,
-      "source_page": "homepage",
-      "source": "https://roboticsconference.org/",
-      "snippet": "No explicit deadline strings detected automatically."
+      "raw": "No explicit deadline strings detected automatically.",
+      "source": "https://roboticsconference.org/"
     },
     {
       "conference": "NeurIPS Datasets & Benchmarks",
-      "venue_type": "conference",
-      "deadline_type": "unavailable",
+      "type": "unavailable",
       "date": "",
-      "is_extension": false,
-      "source_page": "homepage",
-      "source": "https://neurips.cc/",
-      "snippet": "No explicit deadline strings detected automatically."
+      "raw": "No explicit deadline strings detected automatically.",
+      "source": "https://neurips.cc/"
     }
   ]
 }

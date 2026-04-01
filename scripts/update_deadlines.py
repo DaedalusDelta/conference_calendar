@@ -4,7 +4,6 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import urljoin, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -22,13 +21,9 @@ DATE_REGEX = re.compile(
     re.IGNORECASE,
 )
 
-KEYWORDS = ("deadline", "submission", "paper", "demo", "abstract", "important dates")
-SUBMISSION_HINTS = ("openreview", "cmt", "submission", "submit", "paperplaza", "easychair", "microsoft")
-WORKSHOP_HINTS = ("workshop", "workshops")
-EXTENSION_HINTS = ("extension", "extended", "deadline extended")
-
+KEYWORDS = ("deadline", "submission", "paper", "demo", "abstract")
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (compatible; conference-deadline-bot/2.0; +https://github.com/)"
+    "User-Agent": "Mozilla/5.0 (compatible; conference-deadline-bot/1.0; +https://github.com/)"
 }
 
 
@@ -44,160 +39,72 @@ def normalize_date(raw: str) -> str | None:
         return None
 
 
-def fetch_html(url: str) -> str | None:
+def scrape_conference(conference: dict[str, str]) -> list[dict[str, str]]:
+    name = conference["name"]
+    url = conference["url"]
     try:
         response = requests.get(url, timeout=20, headers=HEADERS)
         response.raise_for_status()
-        return response.text
-    except Exception:
-        return None
+    except Exception as exc:
+        return [{"conference": name, "type": "unavailable", "date": "", "source": url, "note": str(exc)}]
 
-
-def discover_priority_links(homepage_url: str, html: str, max_links: int = 12) -> list[dict[str, str]]:
-    soup = BeautifulSoup(html, "html.parser")
-    domain = urlparse(homepage_url).netloc
-    links: list[dict[str, str]] = []
-    seen: set[str] = set()
-
-    for a in soup.find_all("a", href=True):
-        href = a.get("href", "").strip()
-        text = " ".join(a.get_text(" ", strip=True).split()).lower()
-        if not href:
-            continue
-
-        full = urljoin(homepage_url, href)
-        if full in seen:
-            continue
-        seen.add(full)
-
-        lower_url = full.lower()
-        combined = f"{text} {lower_url}"
-
-        is_submission = any(h in combined for h in SUBMISSION_HINTS)
-        is_workshop = any(h in combined for h in WORKSHOP_HINTS)
-
-        if not is_submission and not is_workshop:
-            continue
-
-        # keep crawling scoped near the conference unless it is a known submission portal
-        keep = (domain in urlparse(full).netloc) or any(h in lower_url for h in ("openreview", "cmt", "easychair", "paperplaza"))
-        if not keep:
-            continue
-
-        page_type = "submission_portal" if is_submission else "workshop_page"
-        links.append({"url": full, "page_type": page_type, "link_text": text or full})
-
-    # prioritize submission portals first, then workshop pages
-    links.sort(key=lambda x: 0 if x["page_type"] == "submission_portal" else 1)
-    return links[:max_links]
-
-
-def extract_deadlines(conference_name: str, source_url: str, page_type: str, html: str) -> list[dict[str, str | bool]]:
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(response.text, "html.parser")
     chunks = [c.strip() for c in soup.stripped_strings if c.strip()]
-    results: list[dict[str, str | bool]] = []
-    seen: set[tuple[str, str, str, str]] = set()
+
+    matches: list[dict[str, str]] = []
+    seen: set[tuple[str, str, str]] = set()
 
     for chunk in chunks:
         lowered = chunk.lower()
         if not any(k in lowered for k in KEYWORDS):
             continue
 
-        is_extension = any(h in lowered for h in EXTENSION_HINTS)
-        if "demo" in lowered:
-            deadline_type = "demo_submission"
-        elif "abstract" in lowered:
-            deadline_type = "abstract_submission"
-        elif "paper" in lowered:
-            deadline_type = "paper_submission"
-        else:
-            deadline_type = "submission"
-
-        venue_type = "workshop" if ("workshop" in lowered or page_type == "workshop_page") else "conference"
-
         for date_match in DATE_REGEX.findall(chunk):
             normalized = normalize_date(date_match)
             if not normalized:
                 continue
 
-            key = (conference_name, deadline_type, normalized, source_url)
+            dtype = "demo" if "demo" in lowered else "paper" if "paper" in lowered else "submission"
+            key = (name, dtype, normalized)
             if key in seen:
                 continue
             seen.add(key)
 
-            results.append(
+            matches.append(
                 {
-                    "conference": conference_name,
-                    "venue_type": venue_type,
-                    "deadline_type": deadline_type,
+                    "conference": name,
+                    "type": dtype,
                     "date": normalized,
-                    "is_extension": is_extension,
-                    "source_page": page_type,
-                    "source": source_url,
-                    "snippet": chunk[:240],
+                    "raw": chunk[:220],
+                    "source": url,
                 }
             )
 
-    return results
-
-
-def scrape_conference(conference: dict[str, str]) -> list[dict[str, str | bool]]:
-    name = conference["name"]
-    homepage = conference["url"]
-    homepage_html = fetch_html(homepage)
-    if not homepage_html:
-        return [
+    if not matches:
+        matches.append(
             {
                 "conference": name,
-                "venue_type": "conference",
-                "deadline_type": "unavailable",
+                "type": "unavailable",
                 "date": "",
-                "is_extension": False,
-                "source_page": "homepage",
-                "source": homepage,
-                "snippet": "Failed to fetch conference homepage.",
-            }
-        ]
-
-    pages = [{"url": homepage, "page_type": "homepage", "link_text": "homepage"}]
-    pages.extend(discover_priority_links(homepage, homepage_html))
-
-    all_results: list[dict[str, str | bool]] = []
-    for page in pages:
-        html = homepage_html if page["url"] == homepage else fetch_html(page["url"])
-        if not html:
-            continue
-        all_results.extend(extract_deadlines(name, page["url"], page["page_type"], html))
-
-    if not all_results:
-        all_results.append(
-            {
-                "conference": name,
-                "venue_type": "conference",
-                "deadline_type": "unavailable",
-                "date": "",
-                "is_extension": False,
-                "source_page": "homepage",
-                "source": homepage,
-                "snippet": "No explicit deadline strings detected automatically.",
+                "raw": "No explicit deadline strings detected automatically.",
+                "source": url,
             }
         )
 
-    return all_results
+    return matches
 
 
 def update_deadlines() -> dict:
-    entries: list[dict[str, str | bool]] = []
+    all_items: list[dict[str, str]] = []
     for conference in load_conferences():
-        entries.extend(scrape_conference(conference))
+        all_items.extend(scrape_conference(conference))
 
-    dated = sorted((item for item in entries if item.get("date")), key=lambda i: str(i["date"]))
-    undated = [item for item in entries if not item.get("date")]
+    dated = sorted((item for item in all_items if item.get("date")), key=lambda i: i["date"])
+    undated = [item for item in all_items if not item.get("date")]
 
     payload = {
-        "format_version": "2.0",
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "count": len(entries),
+        "count": len(all_items),
         "items": dated + undated,
     }
 
