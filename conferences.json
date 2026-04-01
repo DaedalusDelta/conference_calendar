@@ -1,0 +1,7 @@
+[
+  {"name": "IROS", "url": "https://www.ieee-iros.org/"},
+  {"name": "ICRA", "url": "https://2026.ieee-icra.org/"},
+  {"name": "CoRL", "url": "https://www.corl.org/"},
+  {"name": "RSS", "url": "https://roboticsconference.org/"},
+  {"name": "NeurIPS Datasets & Benchmarks", "url": "https://neurips.cc/"}
+]
