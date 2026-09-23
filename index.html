@@ -3,139 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Robot Learning Deadlines</title>
-    <meta
-      name="description"
-      content="A clean calendar and reference board for robotics and robot learning conference deadlines."
-    />
+    <meta name="description" content="A clear, source-linked view of robotics and AI conference submission deadlines, with workshops available on demand." />
+    <title>Conference Deadlines · Ray Muxin Liu</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="page-shell">
-      <aside class="page-sidebar" aria-label="Page navigation">
-        <div class="sidebar-card">
-          <p class="sidebar-kicker">Navigate</p>
-          <nav class="sidebar-nav">
-            <a href="#overview">Overview</a>
-            <a href="#timeline-section">Next Up</a>
-            <details class="sidebar-group">
-              <summary>Upcoming Dates</summary>
-              <div id="sidebar-months" class="sidebar-subnav"></div>
-            </details>
-            <details class="sidebar-group">
-              <summary>All Entries</summary>
-              <div id="sidebar-conferences" class="sidebar-subnav"></div>
-            </details>
-            <a href="#archive-section">Past Deadlines</a>
-          </nav>
-        </div>
-      </aside>
-
-      <div class="container">
-      <header id="overview" class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Conference Calendar</p>
-          <h1>Robot Learning Deadlines</h1>
-          <p class="lede">
-            A simple calendar for tracking conference and workshop deadlines, with official-source
-            links and extension notes when they exist.
-          </p>
-        </div>
-
-        <div class="hero-meta">
-          <p id="updated" class="meta">Loading latest deadline snapshot...</p>
-          <div class="stats" aria-label="Deadline summary">
-            <article class="stat">
-              <span class="stat-label">Upcoming</span>
-              <strong id="stat-upcoming">0</strong>
-            </article>
-            <article class="stat">
-              <span class="stat-label">This Month</span>
-              <strong id="stat-urgent">0</strong>
-            </article>
-            <article class="stat">
-              <span class="stat-label">Extensions</span>
-              <strong id="stat-extensions">0</strong>
-            </article>
-            <article class="stat">
-              <span class="stat-label">Conflicts</span>
-              <strong id="stat-conflicts">0</strong>
-            </article>
-          </div>
-        </div>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-brand" href="https://raymuxinliu.com/">Ray Muxin Liu</a>
+        <a class="site-return" href="https://raymuxinliu.com/">← Back to site</a>
       </header>
 
-      <section class="toolbar">
-        <label class="search-wrap" for="search">
-          <span class="search-label">Search</span>
-          <input id="search" type="search" placeholder="Filter conferences, deadline types, notes..." />
-        </label>
-        <div class="legend" aria-label="Deadline legend">
-          <span class="legend-pill legend-urgent">Approaching this month</span>
-          <span class="legend-pill legend-extension">Extension recorded</span>
-          <span class="legend-pill legend-conflict">Conflicting sources</span>
-        </div>
-      </section>
-
-      <section class="filter-bar" aria-label="View filters">
-        <button class="filter-chip is-active" data-filter="all" type="button">All</button>
-        <button class="filter-chip" data-filter="urgent" type="button">Due This Month</button>
-        <button class="filter-chip" data-filter="changed" type="button">Extensions</button>
-        <button class="filter-chip" data-filter="conflicts" type="button">Conflicts</button>
-        <button class="filter-chip" data-filter="workshops" type="button">Workshops</button>
-      </section>
-
-      <section id="change-banner" class="change-banner" aria-live="polite"></section>
-
-      <section id="timeline-section" class="panel timeline-panel">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Timeline</p>
-            <h2>Next Up</h2>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">Research resource</p>
+          <h1 id="page-title">Conference deadlines</h1>
+          <p class="intro-copy">Main robotics and AI calls at a glance. Workshops are tucked below.</p>
+          <div class="snapshot-line">
+            <span id="updated">Loading deadline data…</span>
+            <span class="snapshot-separator" aria-hidden="true">·</span>
+            <span>Confirm each deadline with its linked source.</span>
           </div>
-          <p class="section-note">A compact view of the nearest deadlines.</p>
-        </div>
-        <div id="timeline" class="timeline" aria-live="polite"></div>
-      </section>
+        </section>
 
-      <section id="calendar-section" class="panel">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Calendar</p>
-            <h2>Upcoming Dates</h2>
+        <section class="controls" aria-label="Find deadlines">
+          <label class="search-field" for="search">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="search" type="search" placeholder="Search a conference or call" autocomplete="off" />
+          </label>
+          <div class="view-switch" role="group" aria-label="Conference view">
+            <button class="view-button is-active" type="button" data-view="all" aria-pressed="true">All conferences</button>
+            <button class="view-button" type="button" data-view="upcoming" aria-pressed="false">Upcoming only</button>
           </div>
-          <p class="section-note">Grouped by month for quick scanning.</p>
-        </div>
-        <div id="calendar" class="calendar" aria-live="polite"></div>
-      </section>
+        </section>
 
-      <section id="entries-section" class="panel">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Reference</p>
-            <h2>All Entries</h2>
+        <div id="status" class="status-note" role="status" aria-live="polite"></div>
+
+        <section class="conference-section" aria-labelledby="conference-heading">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Main track</p>
+              <h2 id="conference-heading">Conferences</h2>
+            </div>
+            <span id="conference-count" class="section-count"></span>
           </div>
-          <p class="section-note">Includes unavailable items so missing dates are obvious.</p>
-        </div>
-        <section id="grid" class="grid" aria-live="polite"></section>
-      </section>
+          <div id="conference-list" class="conference-list" aria-live="polite"></div>
+        </section>
 
-      <details id="archive-section" class="panel archive-panel">
-        <summary class="archive-summary">
-          <span>
-            <span class="section-kicker">Archive</span>
-            <strong>Past Deadlines</strong>
-          </span>
-          <span id="past-count" class="archive-count">0 items</span>
-        </summary>
-        <section id="past-grid" class="grid past-grid" aria-live="polite"></section>
-      </details>
-      </div>
-    </main>
+        <section class="related-section" aria-labelledby="related-heading">
+          <details id="related-details" class="related-details">
+            <summary>
+              <span class="related-summary-copy">
+                <span class="section-kicker">Explore further</span>
+                <strong id="related-heading">Workshops & related calls</strong>
+                <small>Smaller calls, proposals, demos, and workshop deadlines</small>
+              </span>
+              <span class="related-summary-action"><span id="related-count">0 entries</span> <span class="chevron" aria-hidden="true">⌄</span></span>
+            </summary>
+            <div class="related-inner">
+              <p class="related-caveat">These are secondary calls. Open an entry to check its original source and submission details.</p>
+              <div id="related-list" class="related-list"></div>
+            </div>
+          </details>
+        </section>
+      </main>
 
-    <dialog id="item-modal" class="item-modal">
-      <form method="dialog" class="item-modal-shell">
-        <button class="modal-close" type="submit" aria-label="Close details">Close</button>
+      <footer class="site-footer">Curated for quick reference. The official conference or submission page is the source of truth.</footer>
+    </div>
+
+    <dialog id="item-modal" class="item-modal" aria-label="Deadline details">
+      <form method="dialog" class="modal-close-form">
+        <button class="modal-close" type="submit" aria-label="Close details">✕</button>
       </form>
       <div id="item-modal-content" class="item-modal-content"></div>
     </dialog>
